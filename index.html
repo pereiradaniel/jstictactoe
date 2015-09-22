@@ -15,26 +15,26 @@
 	<h3 class="title" id="game-msg"></h3>
 	<table class="gameboard">
 		<tr>
-			<td id="s1" class="box anim"></td>
-			<td id="s2" class="box anim"></td>
-			<td id="s3" class="box anim"></td>
+			<td id="s1" class="box"></td>
+			<td id="s2" class="box"></td>
+			<td id="s3" class="box"></td>
 		</tr>
 		<tr>
-			<td id="s4" class="box anim"></td>
-			<td id="s5" class="box anim"></td>
-			<td id="s6" class="box anim"></td>
+			<td id="s4" class="box"></td>
+			<td id="s5" class="box"></td>
+			<td id="s6" class="box"></td>
 		</tr>
 		<tr>
-			<td id="s7" class="box anim"></td>
-			<td id="s8" class="box anim"></td>
-			<td id="s9" class="box anim"></td>
+			<td id="s7" class="box"></td>
+			<td id="s8" class="box"></td>
+			<td id="s9" class="box"></td>
 		</tr>
 	</table>
 
 	<table class="scoreboard">
 		<tr>
-			<td>X score</td>
-			<td>O Score</td>
+			<td class="scores">X score</td>
+			<td class="scores">O Score</td>
 		</tr>
 		<tr>
 			<td id="xscorebox"></td>
@@ -43,7 +43,10 @@
 	</table>
 	<table class="controls">
 		<tr>
+		<!--
 			<td><input id="reset" type="button" value="New game" align="center" onclick="clearBoxes();" /><td>
+		-->
+			<td><h3><a id="reset">New Game</a></h3></td>
 		</tr>
 	</table>
 

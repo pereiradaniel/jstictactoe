@@ -28,13 +28,12 @@ body {
 
 .box {
 	margin: auto;
-	font-size: 32px;
 	text-align: center;
 	width: 40px;
 	height: 80px;
 	color: #F6F5E0;
 	text-shadow: 2px 2px 4px #382F4C;
-	font: 40px 'Patrick Hand';
+	font: 2px 'Patrick Hand';
 	text-shadow: 2px 2px 4px #010302;
 	border-radius: 20%;	
 	transition: font-size 1s linear,
@@ -44,10 +43,34 @@ body {
 		background 0.5s linear;
 }
 
-.animate {
-	font-size: 2em;
-	border-radius: 50%;
+.anim {
+	color: #F1696D;
+	background-color: #C9DA58;
+	background: linear-gradient(to bottom right, #F6F5E0 5%, rgba(255,0,0,0), #C9DA58);
+
+	box-shadow: 0px 0px 30px #F1696D;
 }
+
+#reset {
+	color: #F1696D;
+	text-decoration: none;
+	transition: font-size 0.5s linear,
+		color 0.5s linear,
+		text-shadow 0.5s linear;
+}
+
+#reset:hover {
+	color: #F6F5E0;
+	font-size: 2.5em;
+	text-shadow: 10px 10px 3px #010302;
+	text-decoration: none;
+}
+
+#reset:visited {
+	color: #F1696D;
+	text-decoration: none;
+}
+
 
 #title {
 	text-shadow: ;
@@ -120,7 +143,7 @@ body {
 
 .controls {
 	margin: auto;
-	width: 20%;
+	/* width: 20%;
 	padding: 10px;
-	text-align: center;
+	text-align: center; */
 }

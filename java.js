@@ -1,6 +1,8 @@
 $(document).ready(function() {
 
 var isPlayerOneTurn = true;
+var winBoxes = [];
+var currentElement = null;
 
 var gameState = {
 	
@@ -37,7 +39,20 @@ var gameState = {
 	};
 
 	var checkRow = function(box1, box2, box3, mark) {
-		return (checkBox(box1) == mark && checkBox(box2) == mark && checkBox(box3) == mark);
+		if ((checkBox(box1) == mark && checkBox(box2) == mark && checkBox(box3) == mark)) {
+			$(getBox(box1)).toggleClass("anim");
+			$(getBox(box2)).toggleClass("anim");
+			$(getBox(box3)).toggleClass("anim");
+			$(currentElement).trigger("mouseleave");
+
+			winBoxes.push($(getBox(box1)));
+			winBoxes.push($(getBox(box2)));
+			winBoxes.push($(getBox(box3)));
+
+			return (checkBox(box1) == mark && checkBox(box2) == mark && checkBox(box3) == mark);
+		}else{
+			return (checkBox(box1) == mark && checkBox(box2) == mark && checkBox(box3) == mark);
+		}
 	};
 
 	var checkBox = function(num) {
@@ -64,8 +79,13 @@ var gameState = {
 		$(getBox(i)).toggleClass("animate");
 		$(getBox(i)).css("background", "");
 		$(getBox(i)).css("border-radius", "20%");
+		$(getBox(i)).css("font-size", "2px")
+		};
+		for (var i = 0; i < winBoxes.length; i++) {
+			$(winBoxes[i]).toggleClass("anim");
+		};
+		winBoxes = [];
 
-		}
 		gameState.winner = null;
 		setGameMsg(selectMark() + "'s turn");
 
@@ -83,35 +103,21 @@ var gameState = {
 	$(".box").on("mouseout", function() {
 		$(this).css("box-shadow", "");
 		$(this).css("background-color", "");
-		$(this).css("color", "#F6F5E0");
+		$(this).css("color", "");
 		$(this).css("box-shadow", "");
 		$(this).css("background", "");
 		// $(this).css("background", "");
 
 	});
 
-	var boxAnimation = function(box) {
-  		// $(box).removeClass("box").animate( {
-		  //   fontSize: "2em",
-		  // }, 5000, function() {
-		  //   // Animation complete.
-		  //  $(this).addClass("box");
-
-		  // });
-
-		$(box).toggleClass('animate');
-
-	}
-
 
 	$(".box").click(function() {
-
-
-		boxAnimation(this);
+		currentElement = this;
 
 		$(this).css("background", "linear-gradient(to bottom right, rgba(255,0,0,0), rgba(255,0,0,0), #F6F5E0");
 		$(this).css("box-shadow", "0px 0px 10px #F1696D");
 		$(this).css("border-radius", "50%");
+		$(this).css("font-size", "32px")
 
 		if (!gameState.winner) {
 			if (this.innerText == "") {
