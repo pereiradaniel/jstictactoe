@@ -61,6 +61,10 @@ var gameState = {
 	var clearBoxes = function() {
 		for (var i = 1; i < 10; i++) {
 		getBox(i).innerText = "";
+		$(getBox(i)).toggleClass("animate");
+		$(getBox(i)).css("background", "");
+		$(getBox(i)).css("border-radius", "20%");
+
 		}
 		gameState.winner = null;
 		setGameMsg(selectMark() + "'s turn");
@@ -71,10 +75,9 @@ var gameState = {
 
 	$(".box").on("mouseover", function() {
 		$(this).css("box-shadow", "0px 0px 30px #F6F5E0");
-		// $(this).css("background", "linear-gradient(to bottom right, rgba(255,0,0,0), #F6F5E0)");
+		// $(this).css("background", "linear-gradient(to bottom #C9DA58, #F6F5E0)");
 		$(this).css("background-color", "#F6F5E0");
 		$(this).css("color", "#F1696D");
-
 	});
 
 	$(".box").on("mouseout", function() {
@@ -82,18 +85,21 @@ var gameState = {
 		$(this).css("background-color", "");
 		$(this).css("color", "#F6F5E0");
 		$(this).css("box-shadow", "");
+		$(this).css("background", "");
 		// $(this).css("background", "");
 
 	});
 
 	var boxAnimation = function(box) {
-  		$(box).animate( {
-		    fontSize: "2em",
-		  }, 5000, function() {
-		    // Animation complete.
-		   //$(this).addClass("box");
+  		// $(box).removeClass("box").animate( {
+		  //   fontSize: "2em",
+		  // }, 5000, function() {
+		  //   // Animation complete.
+		  //  $(this).addClass("box");
 
-		  });
+		  // });
+
+		$(box).toggleClass('animate');
 
 	}
 
@@ -102,6 +108,10 @@ var gameState = {
 
 
 		boxAnimation(this);
+
+		$(this).css("background", "linear-gradient(to bottom right, rgba(255,0,0,0), rgba(255,0,0,0), #F6F5E0");
+		$(this).css("box-shadow", "0px 0px 10px #F1696D");
+		$(this).css("border-radius", "50%");
 
 		if (!gameState.winner) {
 			if (this.innerText == "") {

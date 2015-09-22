@@ -37,10 +37,16 @@ body {
 	font: 40px 'Patrick Hand';
 	text-shadow: 2px 2px 4px #010302;
 	border-radius: 20%;	
+	transition: font-size 1s linear,
+		color 0.3s linear,
+		box-shadow 0.5s linear,
+		border-radius 0.8s linear,
+		background 0.5s linear;
 }
 
-.anim {
-	
+.animate {
+	font-size: 2em;
+	border-radius: 50%;
 }
 
 #title {
