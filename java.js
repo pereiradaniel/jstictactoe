@@ -32,6 +32,7 @@ var gameState = {
 				//console.log("Win condition for " + currentPlayerMark);
 				addToScore();
 				gameState.winner = currentPlayerMark;
+				setGameMsg(currentPlayerMark + " has won!");
 		}else{};
 	};
 
@@ -40,7 +41,11 @@ var gameState = {
 	};
 
 	var checkBox = function(num) {
-		return document.getElementById(num).innerText;
+		return document.getElementById("s" + num).innerText;
+	};
+
+	var getBox = function(num) {
+		return document.getElementById("s" + num);
 	};
 
 	var addToScore = function() {
@@ -55,26 +60,63 @@ var gameState = {
 
 	var clearBoxes = function() {
 		for (var i = 1; i < 10; i++) {
-			document.getElementById(i).innerText = "";
+		getBox(i).innerText = "";
 		}
 		gameState.winner = null;
+		setGameMsg(selectMark() + "'s turn");
+
 	};
 
 	document.getElementById("reset").onclick = clearBoxes;
 
+	$(".box").on("mouseover", function() {
+		$(this).css("box-shadow", "0px 0px 30px #F6F5E0");
+		// $(this).css("background", "linear-gradient(to bottom right, rgba(255,0,0,0), #F6F5E0)");
+		$(this).css("background-color", "#F6F5E0");
+		$(this).css("color", "#F1696D");
+
+	});
+
+	$(".box").on("mouseout", function() {
+		$(this).css("box-shadow", "");
+		$(this).css("background-color", "");
+		$(this).css("color", "#F6F5E0");
+		$(this).css("box-shadow", "");
+		// $(this).css("background", "");
+
+	});
+
+	var boxAnimation = function(box) {
+  		$(box).animate( {
+		    fontSize: "2em",
+		  }, 5000, function() {
+		    // Animation complete.
+		   //$(this).addClass("box");
+
+		  });
+
+	}
+
 
 	$(".box").click(function() {
+
+
+		boxAnimation(this);
+
 		if (!gameState.winner) {
 			if (this.innerText == "") {
 			// place mark in the selected box
 			this.innerText = selectMark();
-			// place mark on the gameState board
-			gameState.board = selectMark();
 			// $(this).off("click");
 			// checkForWinner
 			checkForWinner(selectMark());
 			isPlayerOneTurn = !isPlayerOneTurn;
-			setGameMsg(selectMark() + "'s turn");
+			if (!gameState.winner) {
+				setGameMsg(selectMark() + "'s turn");
+			}else{
+
+			};
+
 			}else{console.log("Pick an empty box!")};
 		}else{
 			// console.log("Game is over!");
