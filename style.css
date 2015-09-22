@@ -4,7 +4,11 @@
 
 }
 
-.gameboard, table, tr, td {
+.title {
+	text-align: center;
+}
+
+.gameboard {
 	border: 3px solid black;
 	margin: auto;
     width: 60%;
@@ -14,8 +18,31 @@
 }
 
 .box {
+	border: 3px solid black;
+	margin: auto;
+	padding: 10px;
 	font-size: 32px;
 	text-align: center;
 	width: 2em;
 	height: 2em;
+}
+
+.scoreboard {
+	border: 3px solid black;
+	margin: auto;
+}
+
+.scoreboard tr td {
+	text-align: center;
+	border: 1px solid black;
+	height: 2em;
+	width: 5em;
+
+}
+
+.controls {
+	margin: auto;
+	width: 20%;
+	padding: 10px;
+	text-align: center;
 }

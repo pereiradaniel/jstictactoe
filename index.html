@@ -9,6 +9,8 @@
 <body>
 
 <div class="container">
+	<h1 class="title">jQuery Tic-Tac-Toe</h1>
+	<h3 class="title" id="game-msg"></h3>
 	<table class="gameboard">
 		<tr>
 			<td id="1" class="box"></td>
@@ -26,6 +28,23 @@
 			<td id="9" class="box"></td>
 		</tr>
 	</table>
+
+	<table class="scoreboard">
+		<tr>
+			<td>X score</td>
+			<td>O Score</td>
+		</tr>
+		<tr>
+			<td id="xscorebox"></td>
+			<td id="oscorebox"></td>
+		</tr>
+	</table>
+	<table class="controls">
+		<tr>
+			<td><input id="reset" type="button" value="New game" align="center" onclick="clearBoxes();" /><td>
+		</tr>
+	</table>
+
 </div>
 </body>
 </html>

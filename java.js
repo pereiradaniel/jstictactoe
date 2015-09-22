@@ -29,7 +29,7 @@ var gameState = {
 			checkRow(3, 6, 9, currentPlayerMark) ||
 			checkRow(1, 5, 9, currentPlayerMark) ||
 			checkRow(3, 5, 7, currentPlayerMark)) {
-				console.log("Win condition for " + currentPlayerMark);
+				//console.log("Win condition for " + currentPlayerMark);
 				addToScore();
 				gameState.winner = currentPlayerMark;
 		}else{};
@@ -46,25 +46,45 @@ var gameState = {
 	var addToScore = function() {
 		if (isPlayerOneTurn == true) {
 			gameState.xScore ++;
+			document.getElementById("xscorebox").innerText = gameState.xScore;
 		}else{
 			gameState.oScore ++;
+			document.getElementById("oscorebox").innerText = gameState.oScore;
 		}
 	};
 
+	var clearBoxes = function() {
+		for (var i = 1; i < 10; i++) {
+			document.getElementById(i).innerText = "";
+		}
+		gameState.winner = null;
+	};
+
+	document.getElementById("reset").onclick = clearBoxes;
+
+
 	$(".box").click(function() {
 		if (!gameState.winner) {
-		// place mark in the selected box
-		this.innerText = selectMark();
-		// place mark on the gameState board
-		gameState.board = selectMark();
-
-		$(this).off("click");
-		// checkForWinner
-		checkForWinner(selectMark());
-		isPlayerOneTurn = !isPlayerOneTurn;
+			if (this.innerText == "") {
+			// place mark in the selected box
+			this.innerText = selectMark();
+			// place mark on the gameState board
+			gameState.board = selectMark();
+			// $(this).off("click");
+			// checkForWinner
+			checkForWinner(selectMark());
+			isPlayerOneTurn = !isPlayerOneTurn;
+			setGameMsg(selectMark() + "'s turn");
+			}else{console.log("Pick an empty box!")};
 		}else{
-			console.log("Gane is over!");
+			// console.log("Game is over!");
 		};
 	});
+
+	var setGameMsg = function(msg) {
+		document.getElementById("game-msg").innerText = msg;
+	};
+
+	setGameMsg(selectMark() + "'s turn");
 
 });
