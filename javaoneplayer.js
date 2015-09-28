@@ -14,6 +14,8 @@ var potentialWins = [
 	[1,5,9],
 	[3,5,7],
 ];
+var isOnePlayerGame = false;
+
 
 var isPlayerOneTurn = true;
 var winBoxes = [];
@@ -217,6 +219,11 @@ var gameState = {
 			isPlayerOneTurn = !isPlayerOneTurn;
 			if (!gameState.winner) {
 				setGameMsg(selectMark() + "'s turn");
+				if (isOnePlayerGame) {
+					computerMove();
+					checkForWinner(selectMark());
+					isPlayerOneTurn = !isPlayerOneTurn;
+				}else{};
 			}else{
 
 			};
